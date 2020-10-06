@@ -1,21 +1,22 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="bg-purple-1"> 
       <q-toolbar>
         <q-btn
           flat
           dense
           round
+          class="text-grey-9"
           icon="menu"
           aria-label="Menu"
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="text-grey-9">
+          Tareas windows
         </q-toolbar-title>
 
-        <div>Quasar v{{ $q.version }}</div>
+    
       </q-toolbar>
     </q-header>
 
@@ -23,14 +24,14 @@
       v-model="leftDrawerOpen"
       show-if-above
       bordered
-      content-class="bg-grey-1"
+      content-class="bg-purple-1"
     >
       <q-list>
         <q-item-label
           header
-          class="text-grey-8"
+          class="text-grey-9"
         >
-          Essential Links
+          Menú
         </q-item-label>
         <EssentialLink
           v-for="link in essentialLinks"
@@ -51,47 +52,11 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksData = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
+    title: 'Pendientes',
     icon: 'school',
-    link: 'https://quasar.dev'
+    link: '/'
   },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
+ 
 ];
 
 export default {
