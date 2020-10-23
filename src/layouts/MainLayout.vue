@@ -3,13 +3,6 @@
 
 		<q-header elevated class="bg-purple-1"> 
 			<q-toolbar>
-				<q-btn
-					flat
-					dense
-					round
-					class="text-grey-9"
-					icon="menu"
-					@click="leftDrawerOpen = !leftDrawerOpen"/>
 
 				<q-toolbar-title class="text-grey-9">
 					Tareas
@@ -20,6 +13,12 @@
 		<q-drawer
 			v-model="leftDrawerOpen"
 			show-if-above
+			:mini="mini"
+	  @mouseover="mini = false"
+        @mouseout="mini= true"
+
+        	:width="200"
+        	:breakpoint="500"
 			bordered
 			content-class="bg-purple-1">
 				<q-list>
@@ -52,6 +51,7 @@ export default {
 	name: 'MainLayout',
 	
 	data: () => ({
+		mini: true,
 		leftDrawerOpen: false,
 		essentialLinks: linksData
 	}),

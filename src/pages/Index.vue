@@ -17,25 +17,31 @@
 			/>
 
 		<q-card class="row" flat bordered v-for="(task, index) in tasks" :key="`task-${index}`">
-			<q-card-section v-if="task.state === false">
-				Tarea incompleta
+			<q-card-section>
+				<p v-if="task.state === false">Tarea incompleta</p>
+				<p v-if="task.state === true">Tarea completa</p>
      		</q-card-section>
-	  <q-separator/>
+
+	  		<q-separator/>
 				
-			<q-card-section class="col" v-html="task.content" />
+			<q-card-section class="col" :class="[task.state ? 'do' : null]" v-html="task.content" />
 
   			<q-separator vertical />
 
 			<q-card-actions vertical class="justify-around q-px-md">
-				
 				<q-btn flat round color="red" icon="delete_forever" >
-					 <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
+					<q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
 						Eliminar
-					 </q-tooltip>
+					</q-tooltip>
 				</q-btn>
-				<q-btn v-if="task.state === false" flat round color="accent" icon="check_circle_outline">
-					 <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
+				<q-btn @click="task.state = true" v-if="task.state === false" flat round color="accent" icon="check_circle_outline">
+					<q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
 						Tarea realizada
+					</q-tooltip>
+				</q-btn>
+				<q-btn @click="task.state = false" v-if="task.state === true" flat round color="accent" icon="alarm">
+					 <q-tooltip anchor="top middle" self="bottom middle" :offset="[10, 10]">
+						Tarea incompleta
 					 </q-tooltip>
 				</q-btn>
        		</q-card-actions>
@@ -84,5 +90,13 @@ export default {
 <style  scoped>
 .task_incomplete{
 	background: rgb(241, 195, 195);
+}
+
+p{
+	margin: 0;
+}
+
+.do{
+	text-decoration: line-through;
 }
 </style>
