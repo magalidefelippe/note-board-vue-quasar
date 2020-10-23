@@ -34,7 +34,13 @@ export default {
 
 	methods: {
 		saveWork(){
-			this.note_collection.push({content: this.editor})
+			//this.note_collection.push({content: this.editor})
+			 this.$q.notify({
+        		message: 'Saved your text to local storage',
+        		color: 'green-4',
+        		textColor: 'white',
+        		icon: 'cloud_done'
+     		})
 		}
 	}
 }
